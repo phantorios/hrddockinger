@@ -1,0 +1,30 @@
+https://learnk8s.io/blog/kubernetes-deploy-laravel-the-easy-way
+
+docker run -ti -p 8080:80 -e APP_KEY=base64:cUPmwHx4LXa4Z25HhzFiWCf7TlQmSqnt98pnuiHmzgY= phantorios/laravel-kubernetes-demo
+docker run -ti -p 8080:80 -e APP_KEY=base64:cUPmwHx4LXa4Z25HhzFiWCf7TlQmSqnt98pnuiHmzgY= laravel-kubernetes-demo
+
+kubectl run laravel-kubernetes-demo --restart=Never --image=phantorios/laravel-kubernetes-demo --port=80 --env=APP_KEY=base64:cUPmwHx4LXa4Z25HhzFiWCf7TlQmSqnt98pnuiHmzgY=
+
+kubectl expose pods laravel-kubernetes-demo --type=NodePort --port=80
+
+service "laravel-kubernetes-demo" exposed
+
+kubectl apply -f deployment.yaml
+
+kubectl scale --replicas=3 deployment/laravel-kubernetes-demo deployment "laravel-kubernetes-demo" scaled
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

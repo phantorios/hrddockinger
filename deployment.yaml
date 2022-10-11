@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hrddockinger
+spec:
+  selector:
+    matchLabels:
+      run: hrddockinger
+  template:
+    metadata:
+      labels:
+        run: hrddockinger
+    spec:
+      containers:
+        - name: demo-hrd
+          image: phantorios/laravel-kubernetes-demo
+          ports:
+            - containerPort: 80
+          env:
+            - name: APP_KEY
+              value: base64:cUPmwHx4LXa4Z25HhzFiWCf7TlQmSqnt98pnuiHmzgY=
